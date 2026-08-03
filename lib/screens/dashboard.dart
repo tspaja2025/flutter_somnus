@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_somnus/shared/app_scaffold.dart';
 import 'package:flutter_somnus/widgets/somnus_glass_card.dart';
@@ -16,88 +17,195 @@ class Dashboard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Wednesday, July 29'),
+            Text(
+              'Wednesday, July 29',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+            const SizedBox(height: 4),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('Good Morning, Alex'),
+                Text(
+                  'Good Morning, Alex',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
                 Container(
-                  width: 32,
-                  height: 32,
+                  width: 40,
+                  height: 40,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primary,
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.primary.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(999),
                   ),
-                  child: const Icon(Symbols.wb_twilight),
-                ),
-              ],
-            ),
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                SizedBox(
-                  width: 200,
-                  height: 200,
-                  child: CircularProgressIndicator(
-                    value: 0.78,
-                    strokeWidth: 16,
-                    strokeCap: StrokeCap.round,
+                  child: Icon(
+                    Symbols.wb_twilight,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
-                Column(
-                  children: [
-                    const Text('SLEEP QUALITY'),
-                    const Text('78%'),
-                    const Text('Optimal Range'),
-                  ],
-                ),
               ],
             ),
+            const SizedBox(height: 32),
+            Center(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  SizedBox(
+                    width: 200,
+                    height: 200,
+                    child: CircularProgressIndicator(
+                      color: Theme.of(context).colorScheme.primary,
+                      backgroundColor: Theme.of(
+                        context,
+                      ).colorScheme.primary.withValues(alpha: 0.08),
+                      value: 0.78,
+                      strokeWidth: 12,
+                      strokeCap: StrokeCap.round,
+                    ),
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'SLEEP QUALITY',
+                        style: Theme.of(
+                          context,
+                        ).textTheme.labelSmall?.copyWith(letterSpacing: 0.6),
+                      ),
+                      Text(
+                        '78%',
+                        style: Theme.of(context).textTheme.displayLarge
+                            ?.copyWith(
+                              fontSize: 36,
+                              fontWeight: FontWeight.w700,
+                            ),
+                      ),
+                      Text(
+                        'Optimal Range',
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Colors.greenAccent.withValues(alpha: 0.8),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 48),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SomnusGlassCard(
-                  child: Column(
-                    children: [
-                      const Icon(Symbols.nest_clock_farsight_analog),
-                      const Text('Duration'),
-                      const Text('7h 24m'),
-                    ],
+                Expanded(
+                  child: SomnusGlassCard(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: Column(
+                      children: [
+                        Icon(
+                          Symbols.nest_clock_farsight_analog,
+                          color: Theme.of(context).colorScheme.secondary,
+                          size: 22,
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Duration',
+                          style: Theme.of(
+                            context,
+                          ).textTheme.labelSmall?.copyWith(letterSpacing: 1.2),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          '7h 24m',
+                          style: Theme.of(context).textTheme.bodyLarge
+                              ?.copyWith(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                SomnusGlassCard(
-                  child: Column(
-                    children: [
-                      const Icon(Symbols.rebase_edit),
-                      const Text('Consistency'),
-                      const Text('92%'),
-                    ],
+                const SizedBox(width: 12),
+                Expanded(
+                  child: SomnusGlassCard(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: Column(
+                      children: [
+                        Icon(
+                          Symbols.rebase_edit,
+                          color: Theme.of(context).colorScheme.secondary,
+                          size: 22,
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Consistency',
+                          style: Theme.of(
+                            context,
+                          ).textTheme.labelSmall?.copyWith(letterSpacing: 1.2),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          '92%',
+                          style: Theme.of(context).textTheme.bodyLarge
+                              ?.copyWith(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                SomnusGlassCard(
-                  child: Column(
-                    children: [
-                      const Icon(Symbols.view_in_ar),
-                      const Text('Deep'),
-                      const Text('2h 15m'),
-                    ],
+                const SizedBox(width: 12),
+                Expanded(
+                  child: SomnusGlassCard(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: Column(
+                      children: [
+                        Icon(
+                          Symbols.view_in_ar,
+                          color: Theme.of(context).colorScheme.secondary,
+                          size: 22,
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Deep',
+                          style: Theme.of(
+                            context,
+                          ).textTheme.labelSmall?.copyWith(letterSpacing: 1.2),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          '2h 15m',
+                          style: Theme.of(context).textTheme.bodyLarge
+                              ?.copyWith(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
             ),
+            const SizedBox(height: 20),
             SomnusGlassCard(
               child: Row(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text('Ready for tonight?'),
-                      const Text('Wind down with guided breathing.'),
-                    ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Ready for tonight?',
+                          style: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Wind down with guided breathing.',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      ],
+                    ),
                   ),
                   Container(
-                    width: 48,
-                    height: 48,
+                    width: 56,
+                    height: 56,
                     decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.primary,
                       borderRadius: BorderRadius.circular(999),
@@ -106,42 +214,181 @@ class Dashboard extends StatelessWidget {
                       Symbols.play_arrow,
                       fill: 1,
                       color: Theme.of(context).colorScheme.onPrimary,
+                      size: 28,
                     ),
                   ),
                 ],
               ),
             ),
+            const SizedBox(height: 28),
             SomnusGlassCard(
               child: Column(
                 children: [
                   Row(
                     children: [
-                      const Icon(Symbols.chart_data),
-                      const Text("LAST NIGHT'S SUMMARY"),
+                      Icon(
+                        Symbols.chart_data,
+                        color: Theme.of(context).colorScheme.secondary,
+                        size: 28,
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        "LAST NIGHT'S SUMMARY",
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(fontWeight: FontWeight.w600),
+                      ),
                       const Spacer(),
                       const Icon(Symbols.arrow_forward),
                     ],
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(Symbols.lightbulb),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text('REM Insight'),
-                            const Text(
-                              "Your REM cycle was 15% longer than avarage. This suggests great cognitive recovery after yesterday's learning sessions.",
-                            ),
-                          ],
+                  const SizedBox(height: 12),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 100,
+                    child: BarChart(
+                      BarChartData(
+                        barTouchData: BarTouchData(
+                          enabled: true,
+                          touchTooltipData: BarTouchTooltipData(
+                            getTooltipColor: (_) => Colors.blueGrey,
+                            tooltipHorizontalAlignment:
+                                FLHorizontalAlignment.right,
+                            tooltipMargin: -10,
+                            getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                              String weekDay = switch (group.x) {
+                                0 => 'Monday',
+                                1 => 'Tuesday',
+                                2 => 'Wednesday',
+                                3 => 'Thursday',
+                                4 => 'Friday',
+                                5 => 'Saturday',
+                                6 => 'Sunday',
+                                _ => throw Error(),
+                              };
+                              return BarTooltipItem(
+                                '$weekDay\n',
+                                const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: ((rod.toY - 1).toStringAsFixed(
+                                      1,
+                                    )).toString(),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          ),
                         ),
+                        titlesData: FlTitlesData(
+                          show: true,
+                          rightTitles: const AxisTitles(
+                            sideTitles: SideTitles(showTitles: false),
+                          ),
+                          topTitles: const AxisTitles(
+                            sideTitles: SideTitles(showTitles: false),
+                          ),
+                          bottomTitles: AxisTitles(
+                            sideTitles: SideTitles(showTitles: false),
+                          ),
+                          leftTitles: const AxisTitles(
+                            sideTitles: SideTitles(showTitles: false),
+                          ),
+                        ),
+                        borderData: FlBorderData(show: false),
+                        barGroups: List.generate(
+                          7,
+                          (i) => switch (i) {
+                            0 => makeGroupData(
+                              context,
+                              0,
+                              5,
+                              isTouched: i == -1,
+                            ),
+                            1 => makeGroupData(
+                              context,
+                              1,
+                              6.5,
+                              isTouched: i == -1,
+                            ),
+                            2 => makeGroupData(
+                              context,
+                              2,
+                              5,
+                              isTouched: i == -1,
+                            ),
+                            3 => makeGroupData(
+                              context,
+                              3,
+                              7.5,
+                              isTouched: i == -1,
+                            ),
+                            4 => makeGroupData(
+                              context,
+                              4,
+                              9,
+                              isTouched: i == -1,
+                            ),
+                            5 => makeGroupData(
+                              context,
+                              5,
+                              11.5,
+                              isTouched: i == -1,
+                            ),
+                            6 => makeGroupData(
+                              context,
+                              6,
+                              6.5,
+                              isTouched: i == -1,
+                            ),
+                            _ => throw Error(),
+                          },
+                        ),
+                        gridData: const FlGridData(show: false),
                       ),
-                    ],
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.surfaceContainer,
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Icon(
+                          Symbols.lightbulb,
+                          color: Theme.of(context).colorScheme.tertiary,
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text('REM Insight'),
+                              const Text(
+                                "Your REM cycle was 15% longer than avarage. This suggests great cognitive recovery after yesterday's learning sessions.",
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
+            const SizedBox(height: 28),
             Row(
               children: [
                 Expanded(
@@ -152,20 +399,27 @@ class Dashboard extends StatelessWidget {
                           width: 48,
                           height: 48,
                           decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.onPrimary,
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.secondary.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Icon(
                             Symbols.alarm,
-                            fill: 1,
-                            color: Theme.of(context).colorScheme.primary,
+                            color: Theme.of(context).colorScheme.secondary,
                           ),
                         ),
-                        const Text('Set Alarm'),
+                        const SizedBox(width: 4),
+                        Text(
+                          'Set Alarm',
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(fontWeight: FontWeight.w600),
+                        ),
                       ],
                     ),
                   ),
                 ),
+                const SizedBox(width: 12),
                 Expanded(
                   child: SomnusGlassCard(
                     child: Row(
@@ -174,16 +428,22 @@ class Dashboard extends StatelessWidget {
                           width: 48,
                           height: 48,
                           decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.onPrimary,
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.tertiary.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Icon(
                             Symbols.notes,
-                            fill: 1,
-                            color: Theme.of(context).colorScheme.primary,
+                            color: Theme.of(context).colorScheme.tertiary,
                           ),
                         ),
-                        const Text('Journal'),
+                        const SizedBox(width: 4),
+                        Text(
+                          'Journal',
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(fontWeight: FontWeight.w600),
+                        ),
                       ],
                     ),
                   ),
@@ -193,6 +453,44 @@ class Dashboard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  BarChartGroupData makeGroupData(
+    BuildContext context,
+    int x,
+    double y, {
+    bool isTouched = false,
+    Color? barColor,
+    double width = 22,
+    List<int> showTooltips = const [],
+  }) {
+    return BarChartGroupData(
+      x: x,
+      barRods: [
+        BarChartRodData(
+          toY: isTouched ? y + 1 : y,
+          color: isTouched
+              ? Colors.green
+              : Theme.of(context).colorScheme.primary.withValues(alpha: 0.7),
+          width: width,
+          borderRadius: BorderRadius.circular(4),
+          borderSide: isTouched
+              ? BorderSide(color: Colors.green.shade800)
+              : BorderSide(
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.primary.withValues(alpha: 0.7),
+                  width: 0,
+                ),
+          backDrawRodData: BackgroundBarChartRodData(
+            show: true,
+            toY: 12,
+            color: Theme.of(context).colorScheme.surfaceContainerHighest,
+          ),
+        ),
+      ],
+      showingTooltipIndicators: showTooltips,
     );
   }
 }
