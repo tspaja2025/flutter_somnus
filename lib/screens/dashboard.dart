@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_somnus/shared/app_scaffold.dart';
 import 'package:flutter_somnus/widgets/somnus_glass_card.dart';
+import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
 
 class Dashboard extends StatelessWidget {
@@ -18,7 +19,7 @@ class Dashboard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Wednesday, July 29',
+              DateFormat('EEEE, MMMM d').format(DateTime.now()),
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: Theme.of(context).colorScheme.primary,
               ),
@@ -53,15 +54,15 @@ class Dashboard extends StatelessWidget {
                 alignment: Alignment.center,
                 children: [
                   SizedBox(
-                    width: 200,
-                    height: 200,
+                    width: 220,
+                    height: 220,
                     child: CircularProgressIndicator(
                       color: Theme.of(context).colorScheme.primary,
                       backgroundColor: Theme.of(
                         context,
                       ).colorScheme.primary.withValues(alpha: 0.08),
                       value: 0.78,
-                      strokeWidth: 12,
+                      strokeWidth: 14,
                       strokeCap: StrokeCap.round,
                     ),
                   ),
@@ -70,22 +71,37 @@ class Dashboard extends StatelessWidget {
                     children: [
                       Text(
                         'SLEEP QUALITY',
-                        style: Theme.of(
-                          context,
-                        ).textTheme.labelSmall?.copyWith(letterSpacing: 0.6),
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          letterSpacing: 0.6,
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        ),
                       ),
                       Text(
                         '78%',
                         style: Theme.of(context).textTheme.displayLarge
                             ?.copyWith(
-                              fontSize: 36,
+                              fontSize: 42,
                               fontWeight: FontWeight.w700,
                             ),
                       ),
-                      Text(
-                        'Optimal Range',
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Colors.greenAccent.withValues(alpha: 0.8),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.greenAccent.withValues(alpha: 0.15),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 4,
+                        ),
+                        child: Text(
+                          '● Optimal Range',
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                color: Colors.greenAccent.withValues(
+                                  alpha: 0.9,
+                                ),
+                                fontSize: 13,
+                              ),
                         ),
                       ),
                     ],
@@ -203,14 +219,9 @@ class Dashboard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    width: 56,
-                    height: 56,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primary,
-                      borderRadius: BorderRadius.circular(999),
-                    ),
-                    child: Icon(
+                  IconButton.filled(
+                    onPressed: () {},
+                    icon: Icon(
                       Symbols.play_arrow,
                       fill: 1,
                       color: Theme.of(context).colorScheme.onPrimary,
@@ -462,7 +473,7 @@ class Dashboard extends StatelessWidget {
     double y, {
     bool isTouched = false,
     Color? barColor,
-    double width = 22,
+    double width = 16,
     List<int> showTooltips = const [],
   }) {
     return BarChartGroupData(
