@@ -62,10 +62,12 @@ class _TrackState extends State<Track> with SingleTickerProviderStateMixin {
   }
 
   void _showStopTrackingDialog(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
+        backgroundColor: colorScheme.surfaceContainer,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
           side: BorderSide(
@@ -74,27 +76,21 @@ class _TrackState extends State<Track> with SingleTickerProviderStateMixin {
             ).colorScheme.outlineVariant.withValues(alpha: 0.3),
           ),
         ),
-        title: Text(
-          'Stop Tracking?',
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
+        title: Text('Stop Tracking?', style: textTheme.headlineMedium),
         content: Text(
           'Your sleep session will end. Would you like to save your data?',
-          style: Theme.of(context).textTheme.bodyMedium,
+          style: textTheme.bodyMedium,
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text(
-              'Cancel',
-              style: Theme.of(context).textTheme.labelMedium,
-            ),
+            child: Text('Cancel', style: textTheme.labelMedium),
           ),
           FilledButton(
             onPressed: () => Navigator.pop(context),
             style: FilledButton.styleFrom(
-              backgroundColor: Theme.of(context).colorScheme.error,
-              foregroundColor: Theme.of(context).colorScheme.onError,
+              backgroundColor: colorScheme.error,
+              foregroundColor: colorScheme.onError,
             ),
             child: Text('Stop Tracking'),
           ),
@@ -105,6 +101,8 @@ class _TrackState extends State<Track> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
     final duration = _currentTime.difference(_bedTime);
 
     return AppScaffold(
@@ -163,8 +161,8 @@ class _TrackState extends State<Track> with SingleTickerProviderStateMixin {
                       const SizedBox(width: 8),
                       Text(
                         'TRACKING SESSION ACTIVE',
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: Theme.of(context).colorScheme.primary,
+                        style: textTheme.labelSmall?.copyWith(
+                          color: colorScheme.primary,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 0.6,
                         ),
@@ -175,12 +173,12 @@ class _TrackState extends State<Track> with SingleTickerProviderStateMixin {
                 const SizedBox(height: 16),
                 Text(
                   '${_getTimeOfDayGreeting()}, Alex.',
-                  style: Theme.of(context).textTheme.headlineMedium,
+                  style: textTheme.headlineMedium,
                 ),
                 const SizedBox(height: 30),
                 Text(
                   _formatDuration(duration),
-                  style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                  style: textTheme.displayLarge?.copyWith(
                     fontWeight: FontWeight.w700,
                     fontSize: 64,
                     letterSpacing: -1.28,
@@ -202,14 +200,14 @@ class _TrackState extends State<Track> with SingleTickerProviderStateMixin {
                     children: [
                       Icon(
                         Symbols.nest_clock_farsight_analog,
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        color: colorScheme.onSurfaceVariant,
                         size: 16,
                       ),
                       const SizedBox(width: 8),
                       Text(
                         'IN BED SINCE ${_formatTime(_bedTime)}',
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        style: textTheme.labelSmall?.copyWith(
+                          color: colorScheme.onSurfaceVariant,
                           letterSpacing: 0.6,
                         ),
                       ),
@@ -242,7 +240,7 @@ class _TrackState extends State<Track> with SingleTickerProviderStateMixin {
                     ),
                     child: Icon(
                       Symbols.water_drop,
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: colorScheme.secondary,
                       size: 28,
                     ),
                   ),
@@ -253,19 +251,19 @@ class _TrackState extends State<Track> with SingleTickerProviderStateMixin {
                       children: [
                         Text(
                           'Ambient Sound',
-                          style: Theme.of(context).textTheme.bodyLarge
-                              ?.copyWith(fontWeight: FontWeight.w600),
+                          style: textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                         const SizedBox(height: 2),
                         Text(
                           'Rain on Tin Roof',
-                          style: Theme.of(context).textTheme.labelSmall
-                              ?.copyWith(
-                                letterSpacing: 0.6,
-                                color: Theme.of(
-                                  context,
-                                ).colorScheme.onSurfaceVariant,
-                              ),
+                          style: textTheme.labelSmall?.copyWith(
+                            letterSpacing: 0.6,
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.onSurfaceVariant,
+                          ),
                         ),
                       ],
                     ),
@@ -281,7 +279,7 @@ class _TrackState extends State<Track> with SingleTickerProviderStateMixin {
                       onPressed: () {},
                       icon: Icon(
                         Symbols.volume_up,
-                        color: Theme.of(context).colorScheme.primary,
+                        color: colorScheme.primary,
                         size: 28,
                       ),
                     ),
@@ -313,7 +311,7 @@ class _TrackState extends State<Track> with SingleTickerProviderStateMixin {
                     ),
                     child: Icon(
                       Symbols.alarm,
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: colorScheme.secondary,
                       size: 28,
                     ),
                   ),
@@ -326,8 +324,9 @@ class _TrackState extends State<Track> with SingleTickerProviderStateMixin {
                           children: [
                             Text(
                               'Smart Alarm',
-                              style: Theme.of(context).textTheme.bodyLarge
-                                  ?.copyWith(fontWeight: FontWeight.w600),
+                              style: textTheme.bodyLarge?.copyWith(
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                             const SizedBox(width: 8),
                             Container(
@@ -343,13 +342,10 @@ class _TrackState extends State<Track> with SingleTickerProviderStateMixin {
                               ),
                               child: Text(
                                 '7:30 AM',
-                                style: Theme.of(context).textTheme.labelSmall
-                                    ?.copyWith(
-                                      color: Theme.of(
-                                        context,
-                                      ).colorScheme.primary,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                                style: textTheme.labelSmall?.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ),
                           ],
@@ -357,14 +353,14 @@ class _TrackState extends State<Track> with SingleTickerProviderStateMixin {
                         const SizedBox(height: 2),
                         Text(
                           'Wakes you in light sleep',
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: textTheme.bodyMedium,
                         ),
                       ],
                     ),
                   ),
                   Switch(
                     value: _smartAlarmEnabled,
-                    activeThumbColor: Theme.of(context).colorScheme.primary,
+                    activeThumbColor: colorScheme.primary,
                     activeTrackColor: Theme.of(
                       context,
                     ).colorScheme.primary.withValues(alpha: 0.3),
@@ -386,20 +382,20 @@ class _TrackState extends State<Track> with SingleTickerProviderStateMixin {
               child: FilledButton.icon(
                 onPressed: () => _showStopTrackingDialog(context),
                 style: FilledButton.styleFrom(
-                  backgroundColor: Theme.of(context).colorScheme.error,
-                  foregroundColor: Theme.of(context).colorScheme.onError,
+                  backgroundColor: colorScheme.error,
+                  foregroundColor: colorScheme.onError,
                   minimumSize: const Size.fromHeight(56),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  textStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
+                  textStyle: textTheme.labelMedium?.copyWith(
                     fontWeight: FontWeight.w600,
                     letterSpacing: 0.6,
                   ),
                 ),
                 icon: Icon(
                   Symbols.stop_circle,
-                  color: Theme.of(context).colorScheme.onError,
+                  color: colorScheme.onError,
                   size: 24,
                 ),
                 label: const Text('STOP TRACKING'),
