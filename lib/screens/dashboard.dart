@@ -10,6 +10,9 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return AppScaffold(
       currentIndex: 0,
       child: SingleChildScrollView(
@@ -20,18 +23,13 @@ class Dashboard extends StatelessWidget {
           children: [
             Text(
               DateFormat('EEEE, MMMM d').format(DateTime.now()),
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-              ),
+              style: textTheme.bodyMedium?.copyWith(color: colorScheme.primary),
             ),
             const SizedBox(height: 4),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Good Morning, Alex',
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
+                Text('Good Morning, Alex', style: textTheme.headlineMedium),
                 Container(
                   width: 40,
                   height: 40,
@@ -41,10 +39,7 @@ class Dashboard extends StatelessWidget {
                     ).colorScheme.primary.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(999),
                   ),
-                  child: Icon(
-                    Symbols.wb_twilight,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                  child: Icon(Symbols.wb_twilight, color: colorScheme.primary),
                 ),
               ],
             ),
@@ -57,7 +52,7 @@ class Dashboard extends StatelessWidget {
                     width: 220,
                     height: 220,
                     child: CircularProgressIndicator(
-                      color: Theme.of(context).colorScheme.primary,
+                      color: colorScheme.primary,
                       backgroundColor: Theme.of(
                         context,
                       ).colorScheme.primary.withValues(alpha: 0.08),
@@ -71,18 +66,17 @@ class Dashboard extends StatelessWidget {
                     children: [
                       Text(
                         'SLEEP QUALITY',
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        style: textTheme.labelSmall?.copyWith(
                           letterSpacing: 0.6,
-                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                          color: colorScheme.onSurfaceVariant,
                         ),
                       ),
                       Text(
                         '78%',
-                        style: Theme.of(context).textTheme.displayLarge
-                            ?.copyWith(
-                              fontSize: 42,
-                              fontWeight: FontWeight.w700,
-                            ),
+                        style: textTheme.displayLarge?.copyWith(
+                          fontSize: 42,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -95,13 +89,10 @@ class Dashboard extends StatelessWidget {
                         ),
                         child: Text(
                           '● Optimal Range',
-                          style: Theme.of(context).textTheme.bodyMedium
-                              ?.copyWith(
-                                color: Colors.greenAccent.withValues(
-                                  alpha: 0.9,
-                                ),
-                                fontSize: 13,
-                              ),
+                          style: textTheme.bodyMedium?.copyWith(
+                            color: Colors.greenAccent.withValues(alpha: 0.9),
+                            fontSize: 13,
+                          ),
                         ),
                       ),
                     ],
@@ -120,7 +111,7 @@ class Dashboard extends StatelessWidget {
                       children: [
                         Icon(
                           Symbols.nest_clock_farsight_analog,
-                          color: Theme.of(context).colorScheme.secondary,
+                          color: colorScheme.secondary,
                           size: 22,
                         ),
                         const SizedBox(height: 8),
@@ -133,8 +124,9 @@ class Dashboard extends StatelessWidget {
                         const SizedBox(height: 6),
                         Text(
                           '7h 24m',
-                          style: Theme.of(context).textTheme.bodyLarge
-                              ?.copyWith(fontWeight: FontWeight.w600),
+                          style: textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ],
                     ),
@@ -148,7 +140,7 @@ class Dashboard extends StatelessWidget {
                       children: [
                         Icon(
                           Symbols.rebase_edit,
-                          color: Theme.of(context).colorScheme.secondary,
+                          color: colorScheme.secondary,
                           size: 22,
                         ),
                         const SizedBox(height: 8),
@@ -161,8 +153,9 @@ class Dashboard extends StatelessWidget {
                         const SizedBox(height: 6),
                         Text(
                           '92%',
-                          style: Theme.of(context).textTheme.bodyLarge
-                              ?.copyWith(fontWeight: FontWeight.w600),
+                          style: textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ],
                     ),
@@ -176,7 +169,7 @@ class Dashboard extends StatelessWidget {
                       children: [
                         Icon(
                           Symbols.view_in_ar,
-                          color: Theme.of(context).colorScheme.secondary,
+                          color: colorScheme.secondary,
                           size: 22,
                         ),
                         const SizedBox(height: 8),
@@ -189,8 +182,9 @@ class Dashboard extends StatelessWidget {
                         const SizedBox(height: 6),
                         Text(
                           '2h 15m',
-                          style: Theme.of(context).textTheme.bodyLarge
-                              ?.copyWith(fontWeight: FontWeight.w600),
+                          style: textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ],
                     ),
@@ -208,13 +202,14 @@ class Dashboard extends StatelessWidget {
                       children: [
                         Text(
                           'Ready for tonight?',
-                          style: Theme.of(context).textTheme.titleMedium
-                              ?.copyWith(fontWeight: FontWeight.w600),
+                          style: textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                         const SizedBox(height: 4),
                         Text(
                           'Wind down with guided breathing.',
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: textTheme.bodyMedium,
                         ),
                       ],
                     ),
@@ -224,7 +219,7 @@ class Dashboard extends StatelessWidget {
                     icon: Icon(
                       Symbols.play_arrow,
                       fill: 1,
-                      color: Theme.of(context).colorScheme.onPrimary,
+                      color: colorScheme.onPrimary,
                       size: 28,
                     ),
                   ),
@@ -239,14 +234,15 @@ class Dashboard extends StatelessWidget {
                     children: [
                       Icon(
                         Symbols.chart_data,
-                        color: Theme.of(context).colorScheme.secondary,
+                        color: colorScheme.secondary,
                         size: 28,
                       ),
                       const SizedBox(width: 4),
                       Text(
                         "LAST NIGHT'S SUMMARY",
-                        style: Theme.of(context).textTheme.titleMedium
-                            ?.copyWith(fontWeight: FontWeight.w600),
+                        style: textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                       const Spacer(),
                       const Icon(Symbols.arrow_forward),
@@ -371,16 +367,13 @@ class Dashboard extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surfaceContainer,
+                      color: colorScheme.surfaceContainer,
                       borderRadius: BorderRadius.circular(18),
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(
-                          Symbols.lightbulb,
-                          color: Theme.of(context).colorScheme.tertiary,
-                        ),
+                        Icon(Symbols.lightbulb, color: colorScheme.tertiary),
                         const SizedBox(width: 16),
                         Expanded(
                           child: Column(
@@ -410,21 +403,28 @@ class Dashboard extends StatelessWidget {
                           width: 48,
                           height: 48,
                           decoration: BoxDecoration(
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.secondary.withValues(alpha: 0.2),
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                colorScheme.primary.withValues(alpha: 0.3),
+                                colorScheme.primary.withValues(alpha: 0.1),
+                              ],
+                            ),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Icon(
                             Symbols.alarm,
-                            color: Theme.of(context).colorScheme.secondary,
+                            color: colorScheme.primary,
+                            size: 28,
                           ),
                         ),
                         const SizedBox(width: 4),
                         Text(
                           'Set Alarm',
-                          style: Theme.of(context).textTheme.bodyMedium
-                              ?.copyWith(fontWeight: FontWeight.w600),
+                          style: textTheme.bodyMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ],
                     ),
@@ -439,21 +439,28 @@ class Dashboard extends StatelessWidget {
                           width: 48,
                           height: 48,
                           decoration: BoxDecoration(
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.tertiary.withValues(alpha: 0.2),
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                colorScheme.tertiary.withValues(alpha: 0.3),
+                                colorScheme.tertiary.withValues(alpha: 0.1),
+                              ],
+                            ),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Icon(
                             Symbols.notes,
-                            color: Theme.of(context).colorScheme.tertiary,
+                            color: colorScheme.tertiary,
+                            size: 28,
                           ),
                         ),
                         const SizedBox(width: 4),
                         Text(
                           'Journal',
-                          style: Theme.of(context).textTheme.bodyMedium
-                              ?.copyWith(fontWeight: FontWeight.w600),
+                          style: textTheme.bodyMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ],
                     ),
@@ -476,6 +483,7 @@ class Dashboard extends StatelessWidget {
     double width = 16,
     List<int> showTooltips = const [],
   }) {
+    final colorScheme = Theme.of(context).colorScheme;
     return BarChartGroupData(
       x: x,
       barRods: [
@@ -483,7 +491,7 @@ class Dashboard extends StatelessWidget {
           toY: isTouched ? y + 1 : y,
           color: isTouched
               ? Colors.green
-              : Theme.of(context).colorScheme.primary.withValues(alpha: 0.7),
+              : colorScheme.primary.withValues(alpha: 0.7),
           width: width,
           borderRadius: BorderRadius.circular(4),
           borderSide: isTouched
@@ -497,7 +505,7 @@ class Dashboard extends StatelessWidget {
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
             toY: 12,
-            color: Theme.of(context).colorScheme.surfaceContainerHighest,
+            color: colorScheme.surfaceContainerHighest,
           ),
         ),
       ],
