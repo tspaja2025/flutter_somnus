@@ -245,7 +245,7 @@ class Dashboard extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      const Icon(Symbols.arrow_forward),
+                      const Icon(Symbols.keyboard_arrow_right, size: 20),
                     ],
                   ),
                   const SizedBox(height: 12),
