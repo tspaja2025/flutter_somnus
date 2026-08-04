@@ -92,6 +92,13 @@ class SomnusTheme {
       letterSpacing: 0.60, // 0.05em * 12
       color: onSurfaceVariant,
     ),
+    titleMedium: TextStyle(
+      fontFamily: fontFamily,
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      height: 28 / 18,
+      color: onSurface,
+    ),
   );
 
   // --- ThemeData ---
