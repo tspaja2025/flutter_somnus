@@ -516,9 +516,9 @@ class _TrendsState extends State<Trends> with SingleTickerProviderStateMixin {
             ),
           ),
           Icon(
-            Symbols.arrow_forward,
+            Symbols.keyboard_arrow_right,
             color: colorScheme.onSurfaceVariant,
-            size: 16,
+            size: 20,
           ),
         ],
       ),
