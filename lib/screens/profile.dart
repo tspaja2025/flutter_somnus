@@ -28,7 +28,7 @@ class Profile extends StatelessWidget {
           ],
         ),
         content: Text(
-          'Are you sure you want to sign out? you\'ll need to sign in again to access your sleep data.',
+          'Are you sure you want to sign out? You\'ll need to sign in again to access your sleep data.',
           style: textTheme.bodyMedium,
         ),
         actions: [
@@ -82,11 +82,6 @@ class Profile extends StatelessWidget {
                           backgroundImage: const NetworkImage(
                             'images/professional_headshot_of_a_calm_friendly_person_in_their_30s_soft_warm_lighting.png',
                           ),
-                          // child: const Icon(
-                          //   Symbols.person,
-                          //   size: 56,
-                          //   color: Colors.grey,
-                          // ),
                         ),
                       ),
                       Container(
@@ -111,7 +106,7 @@ class Profile extends StatelessWidget {
                           icon: Icon(
                             Symbols.edit,
                             color: colorScheme.onPrimary,
-                            size: 28,
+                            size: 16,
                           ),
                         ),
                       ),
@@ -293,7 +288,6 @@ class Profile extends StatelessWidget {
                       size: 20,
                     ),
                   ),
-                  const SizedBox(height: 12),
                 ],
               ),
             ),
@@ -335,7 +329,7 @@ class Profile extends StatelessWidget {
                   const SizedBox(height: 12),
                   _buildMenuItem(
                     context,
-                    icon: Symbols.help_center,
+                    icon: Symbols.feedback,
                     title: 'Feedback',
                     iconColor: colorScheme.primary,
                     trailing: Icon(
@@ -408,49 +402,52 @@ class Profile extends StatelessWidget {
     return InkWell(
       onTap: () {},
       borderRadius: BorderRadius.circular(8),
-      child: Row(
-        children: [
-          Container(
-            width: 44,
-            height: 44,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  iconColor.withValues(alpha: 0.3),
-                  iconColor.withValues(alpha: 0.1),
-                ],
-              ),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(icon, color: iconColor, size: 24),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.w500,
-                  ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 4),
+        child: Row(
+          children: [
+            Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    iconColor.withValues(alpha: 0.3),
+                    iconColor.withValues(alpha: 0.1),
+                  ],
                 ),
-                if (subtitle != null) ...[
-                  const SizedBox(height: 2),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(icon, color: iconColor, size: 24),
+            ),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Text(
-                    subtitle,
-                    style: textTheme.labelSmall?.copyWith(
-                      color: colorScheme.onSurfaceVariant,
+                    title,
+                    style: textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
+                  if (subtitle != null) ...[
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitle,
+                      style: textTheme.labelSmall?.copyWith(
+                        color: colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ],
                 ],
-              ],
+              ),
             ),
-          ),
-          trailing,
-        ],
+            trailing,
+          ],
+        ),
       ),
     );
   }

@@ -92,7 +92,7 @@ class _TrackState extends State<Track> with SingleTickerProviderStateMixin {
               backgroundColor: colorScheme.error,
               foregroundColor: colorScheme.onError,
             ),
-            child: Text('Stop Tracking'),
+            child: const Text('Stop Tracking'),
           ),
         ],
       ),

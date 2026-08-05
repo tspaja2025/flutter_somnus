@@ -30,8 +30,8 @@ class SomnusDesignTokens extends ThemeExtension<SomnusDesignTokens> {
     this.marginMobile = 20.0,
     this.marginDesktop = 120.0,
     this.glassBlur = 20.0,
-    this.glassBorderColor = const Color(0x1AffFFFF), // 10% white
-    this.primaryGlowColor = const Color(0x40C8BFFF), // Lavender glow
+    this.glassBorderColor = const Color(0x1AffFFFF),
+    this.primaryGlowColor = const Color(0x40C8BFFF),
   });
 
   @override

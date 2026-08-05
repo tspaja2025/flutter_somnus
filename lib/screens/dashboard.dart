@@ -314,43 +314,43 @@ class Dashboard extends StatelessWidget {
                         barGroups: List.generate(
                           7,
                           (i) => switch (i) {
-                            0 => makeGroupData(
+                            0 => _makeGroupData(
                               context,
                               0,
                               5,
                               isTouched: i == -1,
                             ),
-                            1 => makeGroupData(
+                            1 => _makeGroupData(
                               context,
                               1,
                               6.5,
                               isTouched: i == -1,
                             ),
-                            2 => makeGroupData(
+                            2 => _makeGroupData(
                               context,
                               2,
                               5,
                               isTouched: i == -1,
                             ),
-                            3 => makeGroupData(
+                            3 => _makeGroupData(
                               context,
                               3,
                               7.5,
                               isTouched: i == -1,
                             ),
-                            4 => makeGroupData(
+                            4 => _makeGroupData(
                               context,
                               4,
                               9,
                               isTouched: i == -1,
                             ),
-                            5 => makeGroupData(
+                            5 => _makeGroupData(
                               context,
                               5,
                               11.5,
                               isTouched: i == -1,
                             ),
-                            6 => makeGroupData(
+                            6 => _makeGroupData(
                               context,
                               6,
                               6.5,
@@ -381,7 +381,7 @@ class Dashboard extends StatelessWidget {
                             children: [
                               const Text('REM Insight'),
                               const Text(
-                                "Your REM cycle was 15% longer than avarage. This suggests great cognitive recovery after yesterday's learning sessions.",
+                                "Your REM cycle was 15% longer than average. This suggests great cognitive recovery after yesterday's learning sessions.",
                               ),
                             ],
                           ),
@@ -474,12 +474,11 @@ class Dashboard extends StatelessWidget {
     );
   }
 
-  BarChartGroupData makeGroupData(
+  BarChartGroupData _makeGroupData(
     BuildContext context,
     int x,
     double y, {
     bool isTouched = false,
-    Color? barColor,
     double width = 16,
     List<int> showTooltips = const [],
   }) {

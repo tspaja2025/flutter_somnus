@@ -44,7 +44,7 @@ class SomnusTheme {
       fontSize: 32,
       fontWeight: FontWeight.w700,
       height: 40 / 32,
-      letterSpacing: -0.64, // -0.02em * 32
+      letterSpacing: -0.64,
       color: onSurface,
     ),
     displayMedium: TextStyle(
@@ -52,7 +52,7 @@ class SomnusTheme {
       fontSize: 28,
       fontWeight: FontWeight.w700,
       height: 36 / 28,
-      letterSpacing: -0.56, // -0.02em * 28
+      letterSpacing: -0.56,
       color: onSurface,
     ),
     headlineMedium: TextStyle(
@@ -81,7 +81,7 @@ class SomnusTheme {
       fontSize: 14,
       fontWeight: FontWeight.w500,
       height: 20 / 14,
-      letterSpacing: 0.14, // 0.01em * 14
+      letterSpacing: 0.14,
       color: onSurface,
     ),
     labelSmall: TextStyle(
@@ -89,7 +89,7 @@ class SomnusTheme {
       fontSize: 12,
       fontWeight: FontWeight.w600,
       height: 16 / 12,
-      letterSpacing: 0.60, // 0.05em * 12
+      letterSpacing: 0.60,
       color: onSurfaceVariant,
     ),
     titleMedium: TextStyle(
@@ -139,11 +139,8 @@ class SomnusTheme {
         color: surfaceContainer.withValues(alpha: 0.40),
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24.0), // rounded-xl (1.5rem)
-          side: const BorderSide(
-            color: Color(0x1AffFFFF), // 10% Opacity white border
-            width: 1.0,
-          ),
+          borderRadius: BorderRadius.circular(24.0),
+          side: const BorderSide(color: Color(0x1AffFFFF), width: 1.0),
         ),
         margin: EdgeInsets.zero,
       ),
@@ -153,15 +150,15 @@ class SomnusTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: primary,
           foregroundColor: onPrimary,
-          minimumSize: const Size.fromHeight(56.0), // Minimum height 56px
+          minimumSize: const Size.fromHeight(56.0),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0), // rounded-lg (1.0rem)
+            borderRadius: BorderRadius.circular(16.0),
           ),
           textStyle: textTheme.labelMedium?.copyWith(
             fontWeight: FontWeight.w600,
           ),
           elevation: 0,
-          shadowColor: primary.withValues(alpha: 0.25), // Soft luminous glow
+          shadowColor: primary.withValues(alpha: 0.25),
         ),
       ),
 
@@ -206,9 +203,7 @@ class SomnusTheme {
       // Progress Indicators
       progressIndicatorTheme: const ProgressIndicatorThemeData(
         color: secondary,
-        circularTrackColor: Color(
-          0x1AB9C3FF,
-        ), // Low-opacity secondary accent track
+        circularTrackColor: Color(0x1AB9C3FF),
         linearTrackColor: Color(0x1AB9C3FF),
       ),
     );

@@ -38,8 +38,7 @@ class _AppScaffoldState extends State<AppScaffold> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       appBar: AppBar(
@@ -52,7 +51,7 @@ class _AppScaffoldState extends State<AppScaffold> {
         actionsPadding: const EdgeInsets.only(right: 8),
         actions: [
           CircleAvatar(
-            backgroundImage: NetworkImage(
+            backgroundImage: const NetworkImage(
               'images/professional_headshot_of_a_calm_friendly_person_in_their_30s_soft_warm_lighting.png',
             ),
           ),

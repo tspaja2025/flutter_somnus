@@ -19,7 +19,7 @@ class SomnusGlassCard extends StatelessWidget {
     final tokens = Theme.of(context).extension<SomnusDesignTokens>()!;
 
     return ClipRRect(
-      borderRadius: BorderRadius.circular(24.0), // rounded-xl
+      borderRadius: BorderRadius.circular(24.0),
       child: BackdropFilter(
         filter: ImageFilter.blur(
           sigmaX: tokens.glassBlur,
@@ -28,10 +28,8 @@ class SomnusGlassCard extends StatelessWidget {
         child: GestureDetector(
           onTap: onTap,
           child: Container(
-            padding:
-                padding ?? EdgeInsets.all(tokens.md), // 24px default padding
+            padding: padding ?? EdgeInsets.all(tokens.md),
             decoration: BoxDecoration(
-              // Gradient for subtle top-left light source effect
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,

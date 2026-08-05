@@ -183,30 +183,25 @@ class _TrendsState extends State<Trends> with SingleTickerProviderStateMixin {
                               reservedSize: 32,
                               interval: 1,
                               getTitlesWidget: (value, meta) {
-                                const days = [
-                                  'Mon',
-                                  'Tue',
-                                  'Wed',
-                                  'Thu',
-                                  'Fri',
-                                  'Sat',
-                                  'Sun',
-                                ];
-                                final index = (value - 1).toInt();
-                                if (index >= 0 && index < days.length) {
-                                  return Text(
-                                    days[index],
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .labelSmall
-                                        ?.copyWith(
-                                          color: Theme.of(
-                                            context,
-                                          ).colorScheme.onSurfaceVariant,
-                                        ),
-                                  );
+                                const dayMap = {
+                                  1: 'Mon',
+                                  3: 'Tue',
+                                  5: 'Wed',
+                                  7: 'Thu',
+                                  9: 'Fri',
+                                  11: 'Sat',
+                                  13: 'Sun',
+                                };
+                                final day = dayMap[value.toInt()];
+
+                                if (day == null) {
+                                  return const SizedBox.shrink();
                                 }
-                                return const SizedBox.shrink();
+
+                                return SideTitleWidget(
+                                  meta: meta,
+                                  child: Text(day),
+                                );
                               },
                             ),
                           ),
@@ -522,26 +517,6 @@ class _TrendsState extends State<Trends> with SingleTickerProviderStateMixin {
           ),
         ],
       ),
-    );
-  }
-
-  Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(fontWeight: FontWeight.bold, fontSize: 16);
-    String text = switch (value.toInt()) {
-      1 => 'Mon',
-      3 => 'Tue',
-      5 => 'Wed',
-      7 => 'Thu',
-      9 => 'Fri',
-      11 => 'Sat',
-      13 => 'Sun',
-      _ => '',
-    };
-
-    return SideTitleWidget(
-      meta: meta,
-      space: 10,
-      child: Text(text, style: style),
     );
   }
 }
