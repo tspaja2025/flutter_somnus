@@ -6,6 +6,49 @@ import 'package:material_symbols_icons/symbols.dart';
 class Profile extends StatelessWidget {
   const Profile({super.key});
 
+  void _showSignOutDialog(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: colorScheme.surfaceContainer,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+          side: BorderSide(
+            color: colorScheme.outlineVariant.withValues(alpha: 0.3),
+          ),
+        ),
+        title: Row(
+          children: [
+            Icon(Symbols.logout, color: colorScheme.error, size: 28),
+            const SizedBox(width: 12),
+            Text('Sign Out', style: textTheme.headlineMedium),
+          ],
+        ),
+        content: Text(
+          'Are you sure you want to sign out? you\'ll need to sign in again to access your sleep data.',
+          style: textTheme.bodyMedium,
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text('Cancel', style: textTheme.labelMedium),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context),
+            style: FilledButton.styleFrom(
+              backgroundColor: colorScheme.error,
+              foregroundColor: colorScheme.onError,
+            ),
+            child: const Text('Sign Out'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -203,134 +246,54 @@ class Profile extends StatelessWidget {
             SomnusGlassCard(
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: 48,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              colorScheme.primary.withValues(alpha: 0.3),
-                              colorScheme.primary.withValues(alpha: 0.1),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Icon(
-                          Symbols.alarm,
-                          color: colorScheme.primary,
-                          size: 28,
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      const Text('Smart Alarm Preferences'),
-                      const Spacer(),
-                      Icon(
-                        Symbols.keyboard_arrow_right,
-                        color: colorScheme.onSurfaceVariant,
-                        size: 20,
-                      ),
-                    ],
+                  _buildMenuItem(
+                    context,
+                    icon: Symbols.alarm,
+                    title: 'Smart Alarm Preferences',
+                    iconColor: colorScheme.primary,
+                    trailing: Icon(
+                      Symbols.keyboard_arrow_right,
+                      color: colorScheme.onSurfaceVariant,
+                      size: 20,
+                    ),
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        width: 48,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              colorScheme.primary.withValues(alpha: 0.3),
-                              colorScheme.primary.withValues(alpha: 0.1),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Icon(
-                          Symbols.health_metrics,
-                          color: colorScheme.primary,
-                          size: 28,
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      const Text('Integrate Apple Health'),
-                      const Spacer(),
-                      Icon(
-                        Symbols.keyboard_arrow_right,
-                        color: colorScheme.onSurfaceVariant,
-                        size: 20,
-                      ),
-                    ],
+                  const SizedBox(height: 12),
+                  _buildMenuItem(
+                    context,
+                    icon: Symbols.health_metrics,
+                    title: 'Integrate Apple Health',
+                    iconColor: colorScheme.primary,
+                    trailing: Icon(
+                      Symbols.keyboard_arrow_right,
+                      color: colorScheme.onSurfaceVariant,
+                      size: 20,
+                    ),
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        width: 48,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              colorScheme.primary.withValues(alpha: 0.3),
-                              colorScheme.primary.withValues(alpha: 0.1),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Icon(
-                          Symbols.notifications,
-                          color: colorScheme.primary,
-                          size: 28,
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      const Text('Notifications'),
-                      const Spacer(),
-                      Icon(
-                        Symbols.keyboard_arrow_right,
-                        color: colorScheme.onSurfaceVariant,
-                        size: 20,
-                      ),
-                    ],
+                  const SizedBox(height: 12),
+                  _buildMenuItem(
+                    context,
+                    icon: Symbols.notifications,
+                    title: 'Notifications',
+                    iconColor: colorScheme.primary,
+                    trailing: Icon(
+                      Symbols.keyboard_arrow_right,
+                      color: colorScheme.onSurfaceVariant,
+                      size: 20,
+                    ),
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        width: 48,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              colorScheme.primary.withValues(alpha: 0.3),
-                              colorScheme.primary.withValues(alpha: 0.1),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Icon(
-                          Symbols.workspace_premium,
-                          color: colorScheme.primary,
-                          size: 28,
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      const Text('Subscription Plan'),
-                      const Spacer(),
-                      Icon(
-                        Symbols.keyboard_arrow_right,
-                        color: colorScheme.onSurfaceVariant,
-                        size: 20,
-                      ),
-                    ],
+                  const SizedBox(height: 12),
+                  _buildMenuItem(
+                    context,
+                    icon: Symbols.workspace_premium,
+                    title: 'Subscription Plan',
+                    iconColor: colorScheme.primary,
+                    trailing: Icon(
+                      Symbols.keyboard_arrow_right,
+                      color: colorScheme.onSurfaceVariant,
+                      size: 20,
+                    ),
                   ),
+                  const SizedBox(height: 12),
                 ],
               ),
             ),
@@ -358,81 +321,44 @@ class Profile extends StatelessWidget {
             SomnusGlassCard(
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: 48,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              colorScheme.primary.withValues(alpha: 0.3),
-                              colorScheme.primary.withValues(alpha: 0.1),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Icon(
-                          Symbols.help_center,
-                          color: colorScheme.primary,
-                          size: 28,
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      const Text('Help Center'),
-                      const Spacer(),
-                      Icon(
-                        Symbols.open_in_new,
-                        color: colorScheme.onSurfaceVariant,
-                        size: 20,
-                      ),
-                    ],
+                  _buildMenuItem(
+                    context,
+                    icon: Symbols.help_center,
+                    title: 'Help Center',
+                    iconColor: colorScheme.primary,
+                    trailing: Icon(
+                      Symbols.open_in_new,
+                      color: colorScheme.onSurfaceVariant,
+                      size: 20,
+                    ),
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        width: 48,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              colorScheme.primary.withValues(alpha: 0.3),
-                              colorScheme.primary.withValues(alpha: 0.1),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Icon(
-                          Symbols.chat_bubble,
-                          color: colorScheme.primary,
-                          size: 28,
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      const Text('Feedback'),
-                      const Spacer(),
-                      Icon(
-                        Symbols.keyboard_arrow_right,
-                        color: colorScheme.onSurfaceVariant,
-                        size: 20,
-                      ),
-                    ],
+                  const SizedBox(height: 12),
+                  _buildMenuItem(
+                    context,
+                    icon: Symbols.help_center,
+                    title: 'Feedback',
+                    iconColor: colorScheme.primary,
+                    trailing: Icon(
+                      Symbols.keyboard_arrow_right,
+                      color: colorScheme.onSurfaceVariant,
+                      size: 20,
+                    ),
                   ),
                 ],
               ),
             ),
+            const SizedBox(height: 32),
             SizedBox(
               width: double.infinity,
               child: OutlinedButton.icon(
-                onPressed: () {},
+                onPressed: () => _showSignOutDialog(context),
                 style: OutlinedButton.styleFrom(
-                  backgroundColor: colorScheme.error,
-                  foregroundColor: colorScheme.onError,
+                  foregroundColor: colorScheme.error,
                   minimumSize: const Size.fromHeight(56),
+                  side: BorderSide(
+                    color: colorScheme.error.withValues(alpha: 0.3),
+                    width: 1.5,
+                  ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
                   ),
@@ -441,13 +367,90 @@ class Profile extends StatelessWidget {
                     letterSpacing: 0.6,
                   ),
                 ),
-                icon: Icon(Symbols.logout, color: colorScheme.onError),
-                label: Text('Sign Out'),
+                icon: Icon(Symbols.logout, color: colorScheme.error, size: 24),
+                label: Text(
+                  'Sign Out',
+                  style: textTheme.labelMedium?.copyWith(
+                    color: colorScheme.error,
+                    letterSpacing: 0.6,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
             ),
-            const Text('Somnus v2.4.1'),
+            const SizedBox(height: 20),
+            Center(
+              child: Text(
+                'Somnus v2.4.1 (892)',
+                style: textTheme.labelSmall?.copyWith(
+                  color: colorScheme.onSurfaceVariant.withValues(alpha: 0.6),
+                  letterSpacing: 0.4,
+                ),
+              ),
+            ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildMenuItem(
+    BuildContext context, {
+    required IconData icon,
+    required String title,
+    String? subtitle,
+    required Color iconColor,
+    required Widget trailing,
+  }) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
+    return InkWell(
+      onTap: () {},
+      borderRadius: BorderRadius.circular(8),
+      child: Row(
+        children: [
+          Container(
+            width: 44,
+            height: 44,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  iconColor.withValues(alpha: 0.3),
+                  iconColor.withValues(alpha: 0.1),
+                ],
+              ),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(icon, color: iconColor, size: 24),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                if (subtitle != null) ...[
+                  const SizedBox(height: 2),
+                  Text(
+                    subtitle,
+                    style: textTheme.labelSmall?.copyWith(
+                      color: colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+          trailing,
+        ],
       ),
     );
   }
